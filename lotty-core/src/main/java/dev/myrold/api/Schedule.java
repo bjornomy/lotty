@@ -1,14 +1,11 @@
 package dev.myrold.api;
 
-import java.time.Instant;
-
 import io.micronaut.core.annotation.Introspected;
 
 @Introspected
-public record Drawing(
+public record Schedule(
     String id,
-    String winner,
-    Price price,
-    Instant drawnAt
+    ScheduleFrequency frequency,
+    String target
 ) {
 }

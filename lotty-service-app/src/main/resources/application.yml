@@ -1,6 +1,9 @@
 micronaut:
   application:
     name: lotty
+  server:
+    port: 10000
+
   router:
     static-resources:
       swagger:
@@ -12,16 +15,31 @@ micronaut:
 
   security:
     authentication: cookie
+    endpoints:
+      logout:
+        get-allowed: true
     oauth2:
       clients:
         github:
+          client-id: da256483085163a28ebd
           scopes:
+            - read:user
             - user:email
           authorization:
             url: https://github.com/login/oauth/authorize
           token:
             url: https://github.com/login/oauth/access_token
             auth-method: client-secret-post
+
+        google:
+          client-id: 122046305528-v2ibjb8juu3bb03sigie34cvikbhk65m.apps.googleusercontent.com
+          openid:
+            issuer: 'https://accounts.google.com'
+
+  http:
+    services:
+      github-api:
+        url: https://api.github.com
 
 datasources:
   default:
@@ -34,6 +52,7 @@ jpa:
   default:
     properties:
       hibernate:
+        physical-naming-strategy: io.hypersistence.utils.hibernate.naming.CamelCaseToSnakeCaseNamingStrategy
         hbm2ddl:
           auto: none
 
@@ -41,6 +60,11 @@ flyway:
   datasources:
     default:
       enabled: true
+      locations:
+        - classpath:dev.myrold.db.migrations
+      default-schema: lotty
+      schemas:
+        - lotty
 
 netty:
   default:

@@ -9,8 +9,13 @@ plugins {
     id 'io.micronaut.aot' version "$micronautPluginVersion"
 }
 
+dependencies {
+    implementation project(':lotty-core')
+    implementation project(':lotty-migrations')
+}
+
 application {
-    mainClass = 'dev.myrold.Application'
+    mainClass = 'dev.myrold.LottyServiceApp'
 }
 
 tasks {

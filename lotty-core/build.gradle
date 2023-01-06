@@ -13,27 +13,28 @@ dependencies {
     annotationProcessor 'io.micronaut.openapi:micronaut-openapi'
     annotationProcessor 'io.micronaut.security:micronaut-security-annotations'
 
-    implementation 'io.micronaut:micronaut-http-client'
-    implementation 'io.micronaut:micronaut-jackson-databind'
-    implementation 'io.micronaut:micronaut-management'
+    api 'io.micronaut:micronaut-http-client'
+    api 'io.micronaut:micronaut-jackson-databind'
+    api 'io.micronaut:micronaut-management'
 
-    implementation 'io.micronaut:micronaut-validation'
-    implementation 'io.micronaut.problem:micronaut-problem-json'
+    api 'io.micronaut:micronaut-validation'
+    api 'io.micronaut.problem:micronaut-problem-json'
 
-    implementation 'io.micronaut.reactor:micronaut-reactor'
-    implementation 'io.micronaut.reactor:micronaut-reactor-http-client'
+    api 'io.micronaut.reactor:micronaut-reactor'
+    api 'io.micronaut.reactor:micronaut-reactor-http-client'
 
-    implementation 'io.micronaut.security:micronaut-security-jwt'
-    implementation 'io.micronaut.security:micronaut-security-oauth2'
+    api 'io.micronaut.security:micronaut-security-jwt'
+    api 'io.micronaut.security:micronaut-security-oauth2'
 
-    implementation 'io.micronaut.sql:micronaut-jdbc-hikari'
-    implementation 'io.micronaut.data:micronaut-data-hibernate-jpa'
-    implementation 'io.micronaut.flyway:micronaut-flyway'
+    api 'io.micronaut.sql:micronaut-jdbc-hikari'
+    api 'io.micronaut.data:micronaut-data-hibernate-jpa'
+    api "io.hypersistence:hypersistence-utils-hibernate-55:${hypersistenceUtilsVersion}"
+    api 'io.micronaut.flyway:micronaut-flyway'
 
-    implementation 'io.swagger.core.v3:swagger-annotations'
-    implementation 'jakarta.annotation:jakarta.annotation-api'
+    api 'io.swagger.core.v3:swagger-annotations'
+    api 'jakarta.annotation:jakarta.annotation-api'
 
-    implementation "com.github.f4b6a3:tsid-creator:${tsidVersion}"
+    api "com.github.f4b6a3:tsid-creator:${tsidVersion}"
 
     compileOnly 'org.projectlombok:lombok'
     runtimeOnly 'ch.qos.logback:logback-classic'
