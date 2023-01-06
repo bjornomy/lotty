@@ -1,13 +1,13 @@
 package dev.myrold.domain;
 
-import java.time.Instant;
-
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
+import dev.myrold.api.PriceType;
 import io.micronaut.core.annotation.Introspected;
 import lombok.Data;
 
@@ -15,18 +15,15 @@ import lombok.Data;
 @Entity
 @Introspected
 @Table(schema = "lotty")
-public class ParticipantEntity implements BaseEntity<Long> {
+public class PriceEntity implements BaseEntity<Long> {
 
     @Id
     private Long id;
 
-    @Column(name = "oauth_identity")
-    private String identity;
+    @Enumerated(EnumType.STRING)
+    private PriceType priceType;
 
-    @Column(name = "participant_name")
-    private String name;
-
-    private Instant createdAt = Instant.now();
+    private String description;
 
     @Version
     private Integer version;

@@ -1,0 +1,5 @@
+micronaut:
+  security:
+    redirect:
+      login-success: 'http://localhost:5173'
+      logout: 'http://localhost:5173'

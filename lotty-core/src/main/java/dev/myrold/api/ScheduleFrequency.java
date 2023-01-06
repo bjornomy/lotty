@@ -3,8 +3,9 @@ package dev.myrold.api;
 import io.micronaut.core.annotation.Introspected;
 
 @Introspected
-public enum PriceType {
-    First,
-    Second,
-    Third
+public enum ScheduleFrequency {
+    Monthly,
+    EveryThreeWeeks,
+    BiWeekly,
+    Weekly
 }

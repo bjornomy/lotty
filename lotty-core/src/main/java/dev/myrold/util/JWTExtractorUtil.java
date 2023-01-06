@@ -4,15 +4,11 @@ import com.nimbusds.jwt.JWT;
 import com.nimbusds.jwt.JWTParser;
 
 import java.text.ParseException;
-import java.util.Map;
 import java.util.Optional;
 
 import dev.myrold.api.Participant;
 import io.micronaut.context.annotation.Property;
-import io.micronaut.http.HttpStatus;
-import io.micronaut.http.exceptions.HttpStatusException;
 import jakarta.inject.Singleton;
-import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j

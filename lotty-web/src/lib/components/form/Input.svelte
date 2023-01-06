@@ -14,9 +14,9 @@
 {#if label !== null}
   <label for={id} class="mr-2">{label}</label>
 {/if}
-{#if type === 'submit'}
+{#if type === 'submit' || type === 'button'}
   <input
-    class={inputClasses}
+    class="cursor-pointer {inputClasses}"
     {id}
     {type}
     {placeholder}
