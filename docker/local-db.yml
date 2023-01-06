@@ -1,0 +1,11 @@
+version: "3"
+services:
+  lotty-db:
+    image: "postgres:15-alpine"
+    restart: always
+    environment:
+      POSTGRES_DB: lotty
+      POSTGRES_USER: lotty_rw
+      POSTGRES_PASSWORD: lotty_rw_pass
+    ports:
+      - "5432:5432"

@@ -1,0 +1,6 @@
+rootProject.name = 'lotty'
+
+include 'lotty-service-app'
+include 'lotty-migrations'
+include 'lotty-core'
+include 'lotty-web'

@@ -1,0 +1,16 @@
+plugins {
+    id 'groovy'
+    id 'idea'
+}
+
+version = '0.1'
+group = 'dev.myrold'
+
+
+wrapper {
+    gradleVersion = 7.6
+    distributionType = Wrapper.DistributionType.ALL
+}
+
+
+

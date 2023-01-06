@@ -1,0 +1,45 @@
+
+plugins {
+    id 'lotty.java-conventions'
+
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
+    id 'com.google.cloud.tools.jib' version '2.8.0'
+
+    id 'io.micronaut.application' version "$micronautPluginVersion"
+    id 'io.micronaut.aot' version "$micronautPluginVersion"
+}
+
+application {
+    mainClass = 'dev.myrold.Application'
+}
+
+tasks {
+    jib {
+        to {
+            image = "gcr.io/myapp/jib-image"
+        }
+    }
+
+}
+
+
+graalvmNative.toolchainDetection = false
+micronaut {
+    runtime("netty")
+    testRuntime("spock2")
+    processing {
+        incremental(true)
+        annotations("dev.myrold.*")
+    }
+    aot {
+        // Please review carefully the optimizations enabled below
+        // Check https://micronaut-projects.github.io/micronaut-aot/latest/guide/ for more details
+        optimizeServiceLoading = true
+        convertYamlToJava = true
+        precomputeOperations = true
+        cacheEnvironment = true
+        optimizeClassLoading = true
+        deduceEnvironment = true
+        optimizeNetty = true
+    }
+}

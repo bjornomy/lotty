@@ -1,0 +1,48 @@
+micronaut:
+  application:
+    name: lotty
+  router:
+    static-resources:
+      swagger:
+        paths: classpath:META-INF/swagger
+        mapping: /swagger/**
+      swagger-ui:
+        paths: classpath:META-INF/swagger/views/swagger-ui
+        mapping: /swagger-ui/**
+
+  security:
+    authentication: cookie
+    oauth2:
+      clients:
+        github:
+          scopes:
+            - user:email
+          authorization:
+            url: https://github.com/login/oauth/authorize
+          token:
+            url: https://github.com/login/oauth/access_token
+            auth-method: client-secret-post
+
+datasources:
+  default:
+    url: jdbc:postgresql://${lotty.database.host}:5432/${lotty.database.name}
+    username: ${lotty.database.user}
+    password: ${lotty.database.password}
+    driver-class-name: org.postgresql.Driver
+
+jpa:
+  default:
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: none
+
+flyway:
+  datasources:
+    default:
+      enabled: true
+
+netty:
+  default:
+    allocator:
+      max-order: 3

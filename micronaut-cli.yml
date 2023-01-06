@@ -1,0 +1,6 @@
+applicationType: default
+defaultPackage: dev.myrold
+testFramework: spock
+sourceLanguage: java
+buildTool: gradle
+features: [ annotation-api, app-name, data, data-jpa, flyway, gradle, http-client, jackson-databind, java, java-application, jdbc-hikari, jib, logback, lombok, management, micronaut-aot, micronaut-build, netty-server, openapi, postgres, problem-json, reactor, reactor-http-client, readme, security-annotations, security-jwt, security-oauth2, shade, spock, swagger-ui, testcontainers, yaml ]
