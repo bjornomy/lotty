@@ -1,6 +1,7 @@
 package dev.myrold.api;
 
 import java.util.List;
+import java.util.Set;
 
 import io.micronaut.core.annotation.Introspected;
 
@@ -8,7 +9,7 @@ import io.micronaut.core.annotation.Introspected;
 public record Lottery(
     String id,
     String name,
-    List<Participant> participants,
+    Set<Participant> participants,
     List<Drawing> drawings
-) {
+) implements TsidAware {
 }

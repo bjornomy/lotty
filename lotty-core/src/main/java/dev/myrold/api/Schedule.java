@@ -7,5 +7,5 @@ public record Schedule(
     String id,
     ScheduleFrequency frequency,
     String target
-) {
+) implements TsidAware {
 }

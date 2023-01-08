@@ -1,0 +1,36 @@
+= Lotty
+
+[lead]
+An App for holding and managing small scale lotteries
+
+The app is intended for small scale lotteries where the participants
+provide all the prices themselves.
+
+App is currently in BETA
+
+== Features
+
+- Sign in with:
+  * Google
+  * GitHub
+  * Microsoft (Planned)
+- Create a lottery
+  * invite others to your lottery
+  * set a schedule
+  * template drawings based on schedule
+  * create multiple prices for each drawing
+  * draw a winner for each price
+  * set a participation fee
+- Notifications:
+  * Email (Planned)
+  * Slack (Planned)
+- Statistics
+
+== Privacy
+
+The app stores:
+
+* your email -> to send you reminders
+* your name  -> to display your name as a participant
+* which lotteries you have participated inn
+* which drawings you've won

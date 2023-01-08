@@ -15,6 +15,7 @@ dependencies {
 
     api 'io.micronaut:micronaut-http-client'
     api 'io.micronaut:micronaut-jackson-databind'
+    api 'io.micronaut.cache:micronaut-cache-caffeine'
     api 'io.micronaut:micronaut-management'
 
     api 'io.micronaut:micronaut-validation'
@@ -39,6 +40,14 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
     runtimeOnly 'ch.qos.logback:logback-classic'
     runtimeOnly 'org.postgresql:postgresql'
+
+    testImplementation 'io.micronaut.test:micronaut-test-spock'
+    testImplementation 'org.spockframework:spock-core'
+
+    testAnnotationProcessor 'io.micronaut:micronaut-inject-groovy'
+    testAnnotationProcessor 'io.micronaut:micronaut-inject-java'
+    testImplementation 'io.micronaut:micronaut-inject-groovy'
+    testImplementation 'io.micronaut:micronaut-inject-java'
 
     testImplementation 'org.testcontainers:postgresql'
     testImplementation 'org.testcontainers:spock'

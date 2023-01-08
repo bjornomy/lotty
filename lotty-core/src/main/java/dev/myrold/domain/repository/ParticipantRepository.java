@@ -30,12 +30,14 @@ public class ParticipantRepository {
             ));
     }
 
-    public Optional<ParticipantEntity> findByIdentity(String identity) {
+    public Optional<ParticipantEntity> findByIdentity(String identity, String provider) {
         return em.createQuery("""
                 select p from ParticipantEntity p
-                where p.identity = :identity""", ParticipantEntity.class
+                where p.openIdIdentity = :identity
+                  and p.provider = :provider""", ParticipantEntity.class
             )
             .setParameter("identity", identity)
+            .setParameter("provider", provider)
             .getResultStream()
             .findAny();
     }

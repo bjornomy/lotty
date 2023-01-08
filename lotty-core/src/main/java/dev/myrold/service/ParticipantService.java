@@ -1,13 +1,13 @@
 package dev.myrold.service;
 
-import java.security.Principal;
-
+import dev.myrold.api.UserInfo;
 import dev.myrold.domain.ParticipantEntity;
 import dev.myrold.domain.repository.BaseRepository;
 import dev.myrold.domain.repository.ParticipantRepository;
 import dev.myrold.mapper.ParticipantMapper;
-import dev.myrold.util.TsidUtil;
+import dev.myrold.util.UserUtil;
 import io.micronaut.context.annotation.Property;
+import io.micronaut.security.authentication.Authentication;
 import jakarta.inject.Singleton;
 import lombok.RequiredArgsConstructor;
 
@@ -18,13 +18,20 @@ public class ParticipantService {
     @Property(name = "micronaut.security.enabled")
     private final boolean securityEnabled;
 
+    private final UserInfoService userInfoService;
     private final BaseRepository baseRepository;
     private final ParticipantRepository participantRepository;
     private final ParticipantMapper participantMapper;
 
-    public ParticipantEntity procureParticipant(Principal principal) {
+    /**
+     * Will try to find an existing Participant for the given user.
+     * If it doesn't exist, create it, and then return it.
+     *
+     * If security is disabled, return default user
+     */
+    public ParticipantEntity procureParticipant(Authentication authentication) {
 
-        if (principal == null) {
+        if (authentication == null) {
             if (securityEnabled) {
                 throw new IllegalArgumentException("No user in context, even though security is enabled!");
             } else {
@@ -32,11 +39,16 @@ public class ParticipantService {
             }
         }
 
-        return participantRepository.findByIdentity(principal.getName())
+        UserInfo user = UserUtil.getUserInfo(authentication);
+
+        return participantRepository.findByIdentity(user.identifier(), user.provider())
             .orElseGet(() -> {
                 ParticipantEntity entity = new ParticipantEntity();
-                entity.setId(TsidUtil.next());
-                entity.setIdentity(principal.getName());
+                entity.setName(user.name());
+                entity.setEmail(user.email());
+                entity.setOpenIdIdentity(user.identifier());
+                entity.setProvider(user.provider());
+                entity.setPictureUrl(user.pictureUrl());
 
                 return baseRepository.persist(entity);
             });

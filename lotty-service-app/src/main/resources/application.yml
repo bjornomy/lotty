@@ -19,6 +19,9 @@ micronaut:
       logout:
         get-allowed: true
     oauth2:
+      openid:
+        additional-claims:
+          access-token: true
       clients:
         github:
           client-id: da256483085163a28ebd

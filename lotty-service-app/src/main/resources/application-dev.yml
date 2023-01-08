@@ -3,3 +3,8 @@ micronaut:
     redirect:
       login-success: 'http://localhost:5173'
       logout: 'http://localhost:5173'
+
+lotty:
+  admin-users:
+    - "bom@myrold.dev"
+    - "bjornole.myrold@gmail.com"

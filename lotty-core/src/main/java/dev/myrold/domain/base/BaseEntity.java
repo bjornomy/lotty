@@ -1,4 +1,4 @@
-package dev.myrold.domain;
+package dev.myrold.domain.base;
 
 import java.io.Serializable;
 import java.util.Objects;

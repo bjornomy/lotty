@@ -4,7 +4,9 @@ import io.micronaut.core.annotation.Introspected;
 
 @Introspected
 public record Price(
-    PriceType type,
-    String description
-) {
+    String id,
+    String name,
+    String description,
+    String winner
+) implements TsidAware {
 }

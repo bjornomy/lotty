@@ -10,7 +10,6 @@ import dev.myrold.domain.ScheduleEntity;
 import dev.myrold.domain.repository.BaseRepository;
 import dev.myrold.domain.repository.ScheduleRepository;
 import dev.myrold.mapper.ScheduleMapper;
-import dev.myrold.util.TsidUtil;
 import jakarta.inject.Singleton;
 import lombok.RequiredArgsConstructor;
 
@@ -25,7 +24,6 @@ public class ScheduleService {
 
     public Optional<Schedule> createSchedule(CreateSchedule createSchedule) {
         ScheduleEntity scheduleEntity = new ScheduleEntity();
-        scheduleEntity.setId(TsidUtil.next());
         scheduleEntity.setFrequency(createSchedule.frequency());
         scheduleEntity.setTarget(createSchedule.target());
 

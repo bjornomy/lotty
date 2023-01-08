@@ -1,4 +1,4 @@
-package dev.myrold.security.github;
+package dev.myrold.client.gitlab;
 
 import org.reactivestreams.Publisher;
 

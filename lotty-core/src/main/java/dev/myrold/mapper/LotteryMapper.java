@@ -20,7 +20,7 @@ public class LotteryMapper implements Mapper<Lottery, LotteryEntity> {
         }
 
         return new Lottery(
-            Tsid.from(entity.getId()).toString(),
+            entity.getIdAsString(),
             entity.getName(),
             participantMapper.mapToApi(entity.getParticipants()),
             drawingMapper.mapToApi(entity.getDrawings())

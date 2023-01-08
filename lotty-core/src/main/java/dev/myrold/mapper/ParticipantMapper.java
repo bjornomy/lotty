@@ -2,7 +2,6 @@ package dev.myrold.mapper;
 
 import dev.myrold.api.Participant;
 import dev.myrold.domain.ParticipantEntity;
-import dev.myrold.util.TsidUtil;
 import jakarta.inject.Singleton;
 
 @Singleton
@@ -14,7 +13,7 @@ public class ParticipantMapper implements Mapper<Participant, ParticipantEntity>
         }
 
         return new Participant(
-            TsidUtil.longToString(entity.getId()),
+            entity.getIdAsString(),
             entity.getName(),
             0,
             0

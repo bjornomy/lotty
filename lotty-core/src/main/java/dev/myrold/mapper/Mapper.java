@@ -1,6 +1,7 @@
 package dev.myrold.mapper;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public interface Mapper<A, E> {
@@ -9,5 +10,9 @@ public interface Mapper<A, E> {
 
     default List<A> mapToApi(List<E> entities) {
         return entities.stream().map(this::mapToApi).collect(Collectors.toList());
+    }
+
+    default Set<A> mapToApi(Set<E> entities) {
+        return entities.stream().map(this::mapToApi).collect(Collectors.toSet());
     }
 }
