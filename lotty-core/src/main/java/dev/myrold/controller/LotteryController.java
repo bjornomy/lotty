@@ -33,8 +33,7 @@ import lombok.extern.slf4j.Slf4j;
 @Secured(SecurityRule.IS_AUTHENTICATED)
 public class LotteryController {
 
-    @Property(name = SecurityConfigurationProperties.PREFIX + ".security-enabled")
-    private final boolean securityEnabled;
+    private final SecurityConfigurationProperties securityProperties;
 
     private final LotteryService lotteryService;
     private final RoleService roleService;
@@ -51,7 +50,7 @@ public class LotteryController {
 
     @Get("/{id}")
     public HttpResponse<?> getLottery(Authentication authentication, @PathVariable String id) {
-        if (securityEnabled && !lotteryService.isOwnedBy(authentication, id)) {
+        if (securityProperties.isEnabled() && !lotteryService.isOwnedBy(authentication, id)) {
             return HttpResponse.badRequest(String.format("You do not own lottery %s", id));
         }
 
@@ -70,7 +69,7 @@ public class LotteryController {
     @Delete("/{id}")
     public HttpResponse<String> deleteLottery(Authentication authentication, @PathVariable String id) {
 
-        if (securityEnabled && !lotteryService.isOwnedBy(authentication, id)) {
+        if (securityProperties.isEnabled() && !lotteryService.isOwnedBy(authentication, id)) {
             return HttpResponse.badRequest(String.format("You do not own lottery %s", id));
         }
 

@@ -1,7 +1,8 @@
 <script>
   import '../app.postcss'
   import UserDropdownMenu from '$lib/components/user-dropdown/UserDropdownMenu.svelte'
-  import NavButton, {NavButtonType} from '$lib/components/nav-button'
+  import {NavButtonType} from '$lib/components/nav-button/nav-button-type'
+  import NavButton from '$lib/components/nav-button/NavButton.svelte'
 
   /** @type {import('./$types').LayoutServerLoad} */
   export let data

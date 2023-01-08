@@ -1,4 +1,4 @@
-package dev.myrold.domain.base;
+package dev.myrold.domain.util;
 
 import com.github.f4b6a3.tsid.Tsid;
 

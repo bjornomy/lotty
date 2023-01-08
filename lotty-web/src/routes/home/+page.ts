@@ -4,6 +4,6 @@ import {getLastLotteries} from '$lib/api/lottery-api'
 export async function load({fetch}: any) {
 
   return {
-    lotteries: getLastLotteries(fetch)
+    lotteries: getLastLotteries({fetch})
   }
 }
