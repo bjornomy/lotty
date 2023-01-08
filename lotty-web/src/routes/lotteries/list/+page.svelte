@@ -12,7 +12,7 @@
     {#each data.lotteries as lottery (lottery.id)}
       <Row>
         <Cell>
-          <a href="/lottery/{lottery.id}">{lottery.name}</a>
+          <a href="/lotteries/{lottery.id}">{lottery.name}</a>
         </Cell>
         <Cell>
           {lottery.participants.length}

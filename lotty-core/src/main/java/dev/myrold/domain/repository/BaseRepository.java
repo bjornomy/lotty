@@ -5,7 +5,7 @@ import javax.persistence.EntityNotFoundException;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
-import dev.myrold.domain.BaseEntity;
+import dev.myrold.domain.base.BaseEntity;
 import io.hypersistence.utils.spring.repository.HibernateRepositoryImpl;
 import jakarta.inject.Singleton;
 

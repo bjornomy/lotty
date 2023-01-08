@@ -13,8 +13,10 @@ public class PriceMapper implements Mapper<Price, PriceEntity> {
         }
 
         return new Price(
-            entity.getPriceType(),
-            entity.getDescription()
+            entity.getIdAsString(),
+            entity.getName(),
+            entity.getDescription(),
+            entity.getWinner().getIdAsString()
         );
     }
 }
