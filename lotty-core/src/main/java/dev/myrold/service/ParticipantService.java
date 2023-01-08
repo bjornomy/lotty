@@ -8,6 +8,7 @@ import dev.myrold.mapper.ParticipantMapper;
 import dev.myrold.util.UserUtil;
 import io.micronaut.context.annotation.Property;
 import io.micronaut.security.authentication.Authentication;
+import io.micronaut.security.config.SecurityConfigurationProperties;
 import jakarta.inject.Singleton;
 import lombok.RequiredArgsConstructor;
 
@@ -15,10 +16,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class ParticipantService {
 
-    @Property(name = "micronaut.security.enabled")
-    private final boolean securityEnabled;
+    private final SecurityConfigurationProperties securityProperties;
 
-    private final UserInfoService userInfoService;
     private final BaseRepository baseRepository;
     private final ParticipantRepository participantRepository;
     private final ParticipantMapper participantMapper;
@@ -32,7 +31,7 @@ public class ParticipantService {
     public ParticipantEntity procureParticipant(Authentication authentication) {
 
         if (authentication == null) {
-            if (securityEnabled) {
+            if (securityProperties.isEnabled()) {
                 throw new IllegalArgumentException("No user in context, even though security is enabled!");
             } else {
                 return participantRepository.getDefaultParticipant();

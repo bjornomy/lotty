@@ -1,8 +1,13 @@
 <script lang="ts">
-  import Card from '$lib/components/Card.svelte'
-  import NavButton from '$lib/components/nav-button/NavButton.svelte'
+  import LotteryList from '$lib/components/LotteryList.svelte'
+
+  import {Card, Button} from 'flowbite-svelte'
+
+  export let data
 </script>
 
-<Card>
-  <NavButton href="/lottery/new" label="Create New Lottery" />
+<Card size="xl">
+  <Button href="/lotteries/new" color="dark" class="w-1/5">Create New Lottery</Button>
+
+  <LotteryList {...data} class="mt-4" />
 </Card>

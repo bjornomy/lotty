@@ -44,6 +44,10 @@ micronaut:
       github-api:
         url: https://api.github.com
 
+endpoints:
+  env:
+    enabled: true
+
 datasources:
   default:
     url: jdbc:postgresql://${lotty.database.host}:5432/${lotty.database.name}
@@ -55,7 +59,8 @@ jpa:
   default:
     properties:
       hibernate:
-        physical-naming-strategy: io.hypersistence.utils.hibernate.naming.CamelCaseToSnakeCaseNamingStrategy
+        physical-naming-strategy: dev.myrold.domain.util.LottyNamingStrategy
+        logical-naming-strategy:
         hbm2ddl:
           auto: none
 

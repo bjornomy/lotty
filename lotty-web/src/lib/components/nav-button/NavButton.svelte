@@ -1,5 +1,5 @@
 <script lang="ts">
-  import {NavButtonType} from "$lib/components/nav-button";
+  import {NavButtonType} from "$lib/components/nav-button/nav-button-type";
 
   export let href: String
   export let label: String

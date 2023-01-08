@@ -17,8 +17,8 @@ import javax.persistence.Version;
 import dev.myrold.domain.base.BaseEntity;
 import dev.myrold.domain.base.LottyBaseEntity;
 import dev.myrold.domain.base.LottyBaseEntityAware;
-import dev.myrold.domain.base.TsidConverter;
-import dev.myrold.domain.base.TsidGenerator;
+import dev.myrold.domain.util.TsidConverter;
+import dev.myrold.domain.util.TsidGenerator;
 import io.micronaut.core.annotation.Introspected;
 import lombok.Data;
 
