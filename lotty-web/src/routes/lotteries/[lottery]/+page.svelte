@@ -5,6 +5,7 @@
 
   /** @type {import('./$types').PageLoad} */
   export let data
+
   let participantTableHeaders = ['Name', 'Wins', 'Participations', 'Participated Since'] as Array<String>;
 </script>
 

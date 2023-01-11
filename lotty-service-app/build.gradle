@@ -15,7 +15,7 @@ dependencies {
 }
 
 application {
-    mainClass = 'dev.myrold.LottyServiceApp'
+    mainClass = 'dev.myrold.lotty.LottyServiceApp'
 }
 
 tasks {

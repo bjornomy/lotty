@@ -1,0 +1,44 @@
+
+plugins {
+    id 'lotty.java-conventions'
+    id 'cz.habarta.typescript-generator' version "$typescriptGeneratorVersion"
+}
+
+dependencies {
+    implementation project(':lotty-api')
+    implementation "com.github.f4b6a3:tsid-creator:${tsidVersion}"
+}
+
+import cz.habarta.typescript.generator.gradle.GenerateTask
+import cz.habarta.typescript.generator.JsonLibrary
+import cz.habarta.typescript.generator.TypeScriptFileType
+import cz.habarta.typescript.generator.TypeScriptOutputKind
+import cz.habarta.typescript.generator.EnumMapping
+import cz.habarta.typescript.generator.IdentifierCasing
+
+task generateEnumTypescript(type: GenerateTask) {
+    jsonLibrary = JsonLibrary.jackson2
+    outputKind = TypeScriptOutputKind.module
+    outputFileType = TypeScriptFileType.implementationFile
+    mapEnum = EnumMapping.asEnum
+    enumMemberCasing = IdentifierCasing.PascalCase
+    nonConstEnums = true
+
+    classes = ['dev.myrold.lotty.api.ScheduleFrequency', 'java.time.DayOfWeek']
+    outputFile = "$projectDir/src/lib/types/lotty-enums.ts"
+}
+
+task generateNonEnumTypescript(type: GenerateTask) {
+    jsonLibrary = JsonLibrary.jackson2
+    outputKind = TypeScriptOutputKind.module
+    outputFileType = TypeScriptFileType.declarationFile
+
+    classPatterns = ['dev.myrold.lotty.api.**']
+    excludeClasses = ['dev.myrold.lotty.api.ScheduleFrequency', 'java.time.DayOfWeek']
+    outputFile = "$projectDir/src/lib/types/lotty.d.ts"
+}
+
+task generateTypescript() {
+    dependsOn(generateEnumTypescript)
+    dependsOn(generateNonEnumTypescript)
+}

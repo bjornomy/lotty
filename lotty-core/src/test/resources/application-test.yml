@@ -2,3 +2,27 @@ datasources:
   default:
     url: jdbc:tc:postgresql:12:///postgres
     driver-class-name: org.testcontainers.jdbc.ContainerDatabaseDriver
+
+lotty:
+  schema: lotty
+  show-sql: false
+
+jpa:
+  default:
+    properties:
+      hibernate:
+        default_schema: ${lotty.schema}
+        physical_naming_strategy: dev.myrold.lotty.domain.hibernate.LottyPhysicalNamingStrategy
+        implicit_naming_strategy: dev.myrold.lotty.domain.hibernate.LottyImplicitNamingStrategy
+        show_sql: ${lotty.show-sql}
+        format_sql: ${lotty.show-sql}
+
+flyway:
+  datasources:
+    default:
+      enabled: true
+      locations:
+        - classpath:dev.myrold.db.migrations
+      default-schema: ${lotty.schema}
+      schemas:
+        - ${lotty.schema}

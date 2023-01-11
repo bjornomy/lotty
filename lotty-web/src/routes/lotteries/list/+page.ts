@@ -1,11 +1,9 @@
-import {lotteries} from '$lib/api/data'
+import {getLastLotteries} from '$lib/api/lottery-api'
 
 /** @type {import('./$types').PageLoad} */
-export async function load() {
-
-  //const lots = await fetch(`/api/lotteries`)
+export async function load({fetch}: any) {
 
   return {
-    lotteries: lotteries
+    lotteries: getLastLotteries(fetch)
   }
 }

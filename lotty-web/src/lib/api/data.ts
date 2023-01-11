@@ -3,6 +3,9 @@ import type {Drawing} from '$lib/types/drawing';
 import type {Participant} from '$lib/types/participant';
 import {Price, Prices} from '$lib/types/price';
 
+import type {Schedule} from '$lib/types/lotty';
+import {ScheduleFrequency} from "$lib/types/lotty-enums";
+
 export const lotteries = [
   {
     name: 'First Lottery',
@@ -51,3 +54,8 @@ export const lotteries = [
     ] as Array<Drawing>
   }
 ] as Array<Lottery>
+
+export const schedules = [
+  {id: "1", scheduleFrequency: ScheduleFrequency.Weekly, target: 'Monday', description: 'Every week on Monday'},
+  {id: "2", scheduleFrequency: ScheduleFrequency.Monthly, target: '01', description: 'Every month on the first'}
+] as Array<Schedule>

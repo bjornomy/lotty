@@ -44,18 +44,24 @@ micronaut:
       github-api:
         url: https://api.github.com
 
+endpoints:
+  env:
+    enabled: true
+
 datasources:
   default:
     url: jdbc:postgresql://${lotty.database.host}:5432/${lotty.database.name}
     username: ${lotty.database.user}
     password: ${lotty.database.password}
     driver-class-name: org.postgresql.Driver
-
+  
 jpa:
   default:
     properties:
       hibernate:
-        physical-naming-strategy: io.hypersistence.utils.hibernate.naming.CamelCaseToSnakeCaseNamingStrategy
+        default_schema: ${lotty.schema}
+        physical_naming_strategy: dev.myrold.lotty.domain.hibernate.LottyPhysicalNamingStrategy
+        implicit_naming_strategy: dev.myrold.lotty.domain.hibernate.LottyImplicitNamingStrategy
         hbm2ddl:
           auto: none
 
@@ -64,12 +70,20 @@ flyway:
     default:
       enabled: true
       locations:
-        - classpath:dev.myrold.db.migrations
-      default-schema: lotty
+        - classpath:dev.myrold.lotty.db.migrations
+      default-schema: ${lotty.schema}
       schemas:
-        - lotty
+        - ${lotty.schema}
 
 netty:
   default:
     allocator:
       max-order: 3
+
+jackson:
+  serialization:
+    writeDatesAsTimestamps: false
+
+
+lotty:
+  schema: lotty

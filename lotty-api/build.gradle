@@ -1,0 +1,7 @@
+plugins {
+    id 'lotty.java-conventions'
+}
+
+dependencies {
+    implementation "com.github.f4b6a3:tsid-creator:${tsidVersion}"
+}

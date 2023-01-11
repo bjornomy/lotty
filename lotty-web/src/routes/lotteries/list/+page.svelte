@@ -1,23 +1,8 @@
 <script lang="ts">
-  import Table, {Cell, Row} from '$lib/components/table'
-  import Card from '$lib/components/Card.svelte'
+  import LotteryList from '$lib/components/LotteryList.svelte'
 
-  /** @type {import('./$types').PageLoad} */
+  /** @type {import('./$types').PageServerLoad} */
   export let data
-  let headers = ['Name', 'Num Participants']
 </script>
 
-<Card>
-  <Table headers={headers}>
-    {#each data.lotteries as lottery (lottery.id)}
-      <Row>
-        <Cell>
-          <a href="/lotteries/{lottery.id}">{lottery.name}</a>
-        </Cell>
-        <Cell>
-          {lottery.participants.length}
-        </Cell>
-      </Row>
-    {/each}
-  </Table>
-</Card>
+<LotteryList {...data} />

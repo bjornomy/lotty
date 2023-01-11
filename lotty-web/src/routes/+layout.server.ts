@@ -11,6 +11,11 @@ export function load({locals, route, params}: any) {
     throw redirect(307, '/home')
   }
 
+  // TODO: implement join link after login
+  // if (url.searchParams.has('redirectTo')) {
+  //   throw redirect(303, url.searchParams.get('redirectTo'));
+  // }
+
   const mapRouteToTitle = () => {
     switch (route.id) {
       case '/login':
@@ -21,8 +26,12 @@ export function load({locals, route, params}: any) {
         return 'Your Profile'
       case '/lotteries/list':
         return 'All Lotteries'
+      case '/lotteries/create':
+        return 'Create New Lottery'
       case '/lotteries/[lottery]':
         return params.lottery
+      case '/schedules/create':
+        return 'Create New Schedule'
       default:
         return `No title mapped for route: ${route.id}`
     }

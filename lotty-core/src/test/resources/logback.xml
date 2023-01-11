@@ -15,4 +15,5 @@
 
 <!--    <logger name="io.micronaut.security" level="DEBUG"/>-->
 <!--    <logger name="io.micronaut.http.client" level="TRACE"/>-->
+<!--    <logger name="org.hibernate" level="DEBUG"/>-->
 </configuration>

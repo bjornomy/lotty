@@ -1,6 +1,23 @@
+pluginManagement {
+    repositories {
+        mavenCentral()
+        gradlePluginPortal()
+    }
+
+    resolutionStrategy {
+        eachPlugin {
+            if (requested.id.id == "cz.habarta.typescript-generator") {
+                useModule("cz.habarta.typescript-generator:typescript-generator-gradle-plugin:${requested.version ?: "+"}")
+            }
+        }
+    }
+}
+
 rootProject.name = 'lotty'
 
 include 'lotty-service-app'
 include 'lotty-migrations'
 include 'lotty-core'
 include 'lotty-web'
+include 'lotty-api'
+include 'lotty-api-jackson'
